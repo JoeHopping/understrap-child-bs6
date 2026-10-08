@@ -1,0 +1,153 @@
+.hellopixel-editor-button-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+}
+
+.hellopixel-editor-button-modal.is-open {
+    display: block;
+}
+
+
+/*
+ * Overlay
+ */
+
+.hellopixel-editor-button-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+/*
+ * Modal window
+ */
+
+.hellopixel-editor-button-modal__window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    max-width: calc(100vw - 40px);
+    transform: translate(-50%, -50%);
+
+    background: #fff;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/*
+ * Header
+ */
+
+.hellopixel-editor-button-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.hellopixel-editor-button-modal__header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+
+/*
+ * Close button
+ */
+
+.hellopixel-editor-button-modal__close {
+    border: 0;
+    background: none;
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    color: #666;
+}
+
+.hellopixel-editor-button-modal__close:hover {
+    color: #000;
+}
+
+
+/*
+ * Body
+ */
+
+.hellopixel-editor-button-modal__body {
+    padding: 20px;
+}
+
+
+/*
+ * Fields
+ */
+
+.hellopixel-editor-button-field {
+    margin-bottom: 20px;
+}
+
+.hellopixel-editor-button-field:last-child {
+    margin-bottom: 0;
+}
+
+.hellopixel-editor-button-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-weight: 600;
+}
+
+
+/*
+ * Inputs / selects
+ */
+
+.hellopixel-editor-button-field input[type="text"],
+.hellopixel-editor-button-field input[type="url"],
+.hellopixel-editor-button-field select {
+    width: 100%;
+    max-width: none;
+}
+
+
+/*
+ * Checkbox
+ */
+
+.hellopixel-editor-button-field input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+.hellopixel-editor-button-field label:has(input[type="checkbox"]) {
+    font-weight: 400;
+}
+
+
+/*
+ * Footer
+ */
+
+.hellopixel-editor-button-modal__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    padding: 15px 20px;
+
+    border-top: 1px solid #ddd;
+
+    background: #f6f7f7;
+}

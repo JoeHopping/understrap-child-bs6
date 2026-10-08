@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hellopixel/basic-content",
+    "title": "Basic Content",
+    "category": "theme",
+    "icon": "columns",
+    "description": "A centered text block.",
+    "supports": {
+        "customClassName": true,
+        "customCSS": true
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    }
+}
