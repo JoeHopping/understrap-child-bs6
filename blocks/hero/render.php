@@ -21,11 +21,11 @@ if(is_front_page()) $block_class .= " front-page";
 // Block Style
 $block_style = '';
 if ($fields['bg_type'] == "img") {
-    $focus_x = $fields['img_w_focal']['img_focal_x'] !== '' ? $fields['img_w_focal']['img_focal_x'] : 50;
-    $focus_y = $fields['img_w_focal']['img_focal_y'] !== '' ? $fields['img_w_focal']['img_focal_y'] : 50;
+    $focal_x = $fields['img_w_focal']['img_focal_x'] !== '' ? $fields['img_w_focal']['img_focal_x'] : 50;
+    $focal_y = $fields['img_w_focal']['img_focal_y'] !== '' ? $fields['img_w_focal']['img_focal_y'] : 50;
     
     $block_style .= 'style="background-image: url('.$fields['img_w_focal']['img']['url'].');';
-    $block_style .= 'background-position: '.esc_attr( $focus_x ).'% '.esc_attr( $focus_y ).'%;"';
+    $block_style .= 'background-position: '.esc_attr( $focal_x ).'% '.esc_attr( $focal_y ).'%;"';
     
     $block_class .= " txt-".$fields['txt_color'];
 }

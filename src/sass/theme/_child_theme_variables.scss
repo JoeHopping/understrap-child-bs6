@@ -5,3 +5,87 @@
 
 $purple: #5533ff; // Thats a sample how you could change a BootStrap variable.
 $primary: $purple;  // Once we've changed the value, we'll also make it the primary brand color.
+
+$ivory:     #F9F8F0;
+$pewter:    #A0A0A0;
+$bronze:    #C8A078;
+$onyx:      #282828;
+$iris:      #9696B4;
+$cedar:     #1E3C28;
+$ember:     #f04032;
+$mulberry:  #4b0f1f;
+
+$cream:     #F9F8F0;
+$form-cell: #ebebeb;
+
+$white:     #FFFFFF;
+$black:     #000000;
+
+// Button Hover
+$ember-hover:       #f05444;
+$mulberry-hover:    $ember;
+$bronze-hover:      $bronze;
+
+// Card Colours - Cedar
+$cedar-card-bg-1: #d2d8d4;
+$cedar-card-bg-2: #a5b0a8;
+$cedar-card-bg-3: #788a7e;
+$cedar-card-bg-4: #4b6353;
+$cedar-card-bg-5: #35503e;
+$cedar-card-bg-6: $cedar;
+$cedar-card-txt-1: $black;
+$cedar-card-txt-2: $black;
+$cedar-card-txt-3: $white;
+$cedar-card-txt-4: $white;
+$cedar-card-txt-5: $white;
+$cedar-card-txt-6: $white;
+
+// Card Colours - Iris
+$iris-card-bg-1: #d5d5e1;
+$iris-card-bg-2: #cbcbda;
+$iris-card-bg-3: #c0c0d2;
+$iris-card-bg-4: #b5b5ca;
+$iris-card-bg-5: #ababc3;
+$iris-card-bg-6: #a0a0bb;
+$iris-card-txt-1: $black;
+$iris-card-txt-2: $black;
+$iris-card-txt-3: $black;
+$iris-card-txt-4: $black;
+$iris-card-txt-5: $black;
+$iris-card-txt-6: $black;
+
+// Card Colours - Mulberry
+$mulberry-card-bg-1: #d6c9c5;
+$mulberry-card-bg-2: #b39b9c;
+$mulberry-card-bg-3: #906d72;
+$mulberry-card-bg-4: #6f3e48;
+$mulberry-card-bg-5: #5c2633;
+$mulberry-card-bg-6: #4b0f1f;
+$mulberry-card-txt-1: $black;
+$mulberry-card-txt-2: $black;
+$mulberry-card-txt-3: $white;
+$mulberry-card-txt-4: $white;
+$mulberry-card-txt-5: $white;
+$mulberry-card-txt-6: $white;
+
+$site-max-width: 1700px;
+
+$standard-padding-t: 30px;
+
+$standard-padding-top-sm: 60px;
+$standard-padding-top-md: 80px;
+$standard-padding-top-lg: 30px;
+$standard-padding-top-xl: 30px;
+$standard-padding-top-xxl: 100px;
+
+$standard-padding-bottom-sm: 60px;
+$standard-padding-bottom-md: 80px;
+$standard-padding-bottom-lg: 30px;
+$standard-padding-bottom-xl: 30px;
+$standard-padding-bottom-xxl: 100px;
+
+$standard-item-spacing: 32px;
+
+$card-border-width: 0;
+$card-border-radius: 0;
+

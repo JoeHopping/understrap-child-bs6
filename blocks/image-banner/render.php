@@ -5,8 +5,8 @@ defined( 'ABSPATH' ) || exit;
 
 $fields = get_fields();
 
-$focus_x = $fields['img_w_focal']['img_focal_x'] !== '' ? $fields['img_w_focal']['img_focal_x'] : 50;
-$focus_y = $fields['img_w_focal']['img_focal_y'] !== '' ? $fields['img_w_focal']['img_focal_y'] : 50;
+$focal_x = $fields['img_w_focal']['img_focal_x'] !== '' ? $fields['img_w_focal']['img_focal_x'] : 50;
+$focal_y = $fields['img_w_focal']['img_focal_y'] !== '' ? $fields['img_w_focal']['img_focal_y'] : 50;
 
 // roffy_pre($fields);
 
