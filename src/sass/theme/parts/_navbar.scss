@@ -1,67 +1,41 @@
 #wrapper-navbar {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
     z-index: 100;
-    @include media-breakpoint-down(lg) {
-        padding: 0;
-    }
-    .logo-wrap {
-        img, svg {
-            width: 215px;
-            height: auto;
-            aspect-ratio: 250 / 64;
-            // --text-color: #4b0f1f;
-            &.tr-nav {
-                --text-color: white;
-            }
-            @include media-breakpoint-down(lg) {
-                width: 180px;
-            }
-        }
-        @include media-breakpoint-down(lg) {
-            padding: 24px 0 24px 24px;
-        }
-    }
-    .navbar-toggler {
-        border: 0;
-        .nav-menu-icon {
-            height: 30px;
-            width: 30px;
-            padding-bottom: 5px;
-            --text-color: #4b0f1f;
-            &.tr-nav {
-                --icon-color: white;
-            }
-        }
-    }
     .navbar {
-        .nav-item {
-            .nav-link {
-                white-space: nowrap;
-                color: $black;
-                font-weight: 400;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: $green;
+        .nav-col {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            @include media-breakpoint-down(lg) {
+                justify-content: space-between;
+                flex-wrap: wrap;
             }
         }
-        @include media-breakpoint-down(lg) {
-            padding: 0px;
+        .navbar-brand {
+            width: fit-content;
+            padding: 0;
+            margin: 0;
+            .nav-logo {
+                width: 215px;
+                height: auto;
+                @include media-breakpoint-down(lg) {
+                    width: 180px;
+                }
+            }
         }
-    }
-    
-
-    #primary-nav-wrap.navbar {
-        padding: 0;
-        .navbar-nav {
-            padding-top: 15px;
+        .navbar-collapse {
+            width: fit-content;
+            justify-content: center;
             .nav-item {
                 .nav-link {
-                    padding: 0 30px 0 0;
-                    font-size: 18px;
-                    &:hover {
-                        color: $bronze;
-                    }
-                }
-                .dropdown-toggle::after {
-                    display: none;
+                    white-space: nowrap;
+                    color: $black;
+                    font-weight: 400;
+                    color: $purple;
                 }
                 .dropdown-menu {
                     &::before {
@@ -74,11 +48,11 @@
                         height: 0;
                         border-left: 20px solid transparent;
                         border-right: 20px solid transparent;
-                        border-bottom: 18px solid $bronze;
+                        border-bottom: 18px solid $blue;
                     }
                     display: block;
                     margin-top: 20px;
-                    background-color: $bronze;
+                    background-color: $blue;
                     border-radius: 0;
                     border: 0;
                     padding: 10px 0;
@@ -91,6 +65,7 @@
                     }
                     .dropdown-item {
                         padding: 5px 18px;
+                        color: $white;
                         &:hover {
                             background-color: unset;
                             text-decoration: underline;
@@ -99,31 +74,27 @@
                 }
             }
         }
-    }
-
-    .utility-nav-wrap {
-        .utility-nav {
+        .nav-btn-wrap {
+            @include media-breakpoint-down(lg) {
+                display: none;
+            }
+            width: fit-content;
             display: flex;
+            align-items: center;
+            padding: 0;
             justify-content: flex-end;
-            padding-top: 0;
-            .navbar-nav {
-                padding-bottom: 10px;
-                .nav-item {
-                    .nav-link {
-                        padding: 0 0 0 25px;
-                        white-space: nowrap;
-                        font-size: 16px;
-                        &:hover {
-                            color: $bronze;
-                        }
-                    }
+        }
+        .navbar-toggler {
+            border: 0;
+            width: fit-content;
+            .nav-menu-icon {
+                height: 30px;
+                width: 30px;
+                padding-bottom: 5px;
+                &.tr-nav {
+                    --icon-color: white;
                 }
             }
-            
-        }
-        .nav-btn-wrap{
-            display: flex;
-            justify-content: flex-end;
         }
     }
 }

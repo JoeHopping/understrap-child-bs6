@@ -3,8 +3,17 @@
 // Just copy a variable from src/sass/assets/bootstrap5/_variables.scss, paste it here and edit the value.
 
 
-$purple: #5533ff; // Thats a sample how you could change a BootStrap variable.
-$primary: $purple;  // Once we've changed the value, we'll also make it the primary brand color.
+$purple: #4d00c7;
+$green: #26ff00;
+
+
+
+
+
+
+
+
+
 
 $ivory:     #F9F8F0;
 $pewter:    #A0A0A0;
@@ -12,8 +21,6 @@ $bronze:    #C8A078;
 $onyx:      #282828;
 $iris:      #9696B4;
 $cedar:     #1E3C28;
-$ember:     #f04032;
-$mulberry:  #4b0f1f;
 
 $cream:     #F9F8F0;
 $form-cell: #ebebeb;
@@ -22,8 +29,8 @@ $white:     #FFFFFF;
 $black:     #000000;
 
 // Button Hover
-$ember-hover:       #f05444;
-$mulberry-hover:    $ember;
+$green-hover:       #f05444;
+$purple-hover:    $green;
 $bronze-hover:      $bronze;
 
 // Card Colours - Cedar
@@ -54,19 +61,19 @@ $iris-card-txt-4: $black;
 $iris-card-txt-5: $black;
 $iris-card-txt-6: $black;
 
-// Card Colours - Mulberry
-$mulberry-card-bg-1: #d6c9c5;
-$mulberry-card-bg-2: #b39b9c;
-$mulberry-card-bg-3: #906d72;
-$mulberry-card-bg-4: #6f3e48;
-$mulberry-card-bg-5: #5c2633;
-$mulberry-card-bg-6: #4b0f1f;
-$mulberry-card-txt-1: $black;
-$mulberry-card-txt-2: $black;
-$mulberry-card-txt-3: $white;
-$mulberry-card-txt-4: $white;
-$mulberry-card-txt-5: $white;
-$mulberry-card-txt-6: $white;
+// Card Colours - purple
+$purple-card-bg-1: #d6c9c5;
+$purple-card-bg-2: #b39b9c;
+$purple-card-bg-3: #906d72;
+$purple-card-bg-4: #6f3e48;
+$purple-card-bg-5: #5c2633;
+$purple-card-bg-6: #4b0f1f;
+$purple-card-txt-1: $black;
+$purple-card-txt-2: $black;
+$purple-card-txt-3: $white;
+$purple-card-txt-4: $white;
+$purple-card-txt-5: $white;
+$purple-card-txt-6: $white;
 
 $site-max-width: 1700px;
 

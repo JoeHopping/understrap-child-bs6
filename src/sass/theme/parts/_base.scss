@@ -162,9 +162,9 @@ p, .p {
 
 
 a {
-    color: $mulberry;
+    color: $purple;
     &:hover {
-        color: $mulberry-hover;
+        color: $purple-hover;
     }
 }
 
@@ -180,11 +180,11 @@ a {
 .color-cedar {
     color: $cedar;
 }
-.color-ember {
-    color: $ember;
+.color-green {
+    color: $green;
 }
-.color-mulberry {
-    color: $mulberry;
+.color-purple {
+    color: $purple;
 }
 
 .bg-bronze {
@@ -199,11 +199,11 @@ a {
 .bg-cedar {
     background-color: $cedar;
 }
-.bg-ember {
-    background-color: $ember;
+.bg-green {
+    background-color: $green;
 }
-.bg-mulberry {
-    background-color: $mulberry;
+.bg-purple {
+    background-color: $purple;
 }
 .bg-cream {
     background-color: $cream;

@@ -82,7 +82,7 @@
             z-index: 0;
         }
         .hero-btn {
-            @extend .btn-mulberry;
+            @extend .btn-purple;
         }
     }
     &.bg-color {
@@ -94,12 +94,12 @@
                 min-height: 650px;
             }
         }
-        &.bg-color-mulberry {
-            background-color: $mulberry;
+        &.bg-color-purple {
+            background-color: $purple;
             .hero-content, .hero-header {
                 color: $white;
                 .btn-link {
-                    @extend .btn-ember;
+                    @extend .btn-green;
                 }
             }
         }
@@ -108,7 +108,7 @@
             .hero-content, .hero-header {
                 color: $black;
                 .btn-link {
-                    @extend .btn-ember;
+                    @extend .btn-green;
                 }
             }
         }
@@ -117,14 +117,14 @@
             .hero-content, .hero-header {
                 color: $black;
                 .btn-link {
-                    @extend .btn-mulberry;
+                    @extend .btn-purple;
                 }
             }
         }
     }
     .btn-wrap {
         .btn-link {
-            @extend .btn-mulberry;
+            @extend .btn-purple;
         }
     }
     &.narrow-padding {

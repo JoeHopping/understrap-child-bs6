@@ -54,7 +54,7 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 
 		<div class="back-btn-wrap">
-			<a href="<?php echo get_post_type_archive_link('post'); ?>" role="button" class="btn-mulberry">&larr; Back to Journal Articles</a>
+			<a href="<?php echo get_post_type_archive_link('post'); ?>" role="button" class="btn-purple">&larr; Back to Journal Articles</a>
 		</div>
 
 	</div><!-- .entry-content -->
