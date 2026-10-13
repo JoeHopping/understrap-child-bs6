@@ -15,8 +15,6 @@ const replace = require( '@rollup/plugin-replace' );
  */
 const banner = require( './banner.js' );
 
-// Populate Bootstrap version specific variables.
-let bsVersion = 5;
 let bsSrcFile = 'bootstrap.js';
 let fileDest = 'child-theme';
 let globals = {
@@ -28,7 +26,6 @@ const external = [ 'jquery' ];
 
 const plugins = [
 	babel( {
-		browserslistEnv: `bs${ bsVersion }`,
 		// Include the helpers in the bundle, at most one copy of each.
 		babelHelpers: 'bundled',
 	} ),

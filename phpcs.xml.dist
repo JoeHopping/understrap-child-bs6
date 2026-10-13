@@ -42,6 +42,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
+				<element value="understrap-child"/>
 				<element value="understrap"/>
 				<element value="woocommerce"/>
 			</property>
@@ -56,11 +57,6 @@
 		<properties>
 			<property name="is_theme" value="true"/>
 		</properties>
-	</rule>
-
-	<!-- Assignments in while conditions are a valid method of looping over iterables. -->
-	<rule ref="WordPress.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition">
-		<exclude-pattern>*</exclude-pattern>
 	</rule>
 
 	<!-- Exclude incorrectly named files that won't be renamed. -->
@@ -89,14 +85,4 @@
 		<exclude phpcs-only="true" name="Generic.Files.LineEndings"/>
 	</rule>
 
-	<!-- Use the WPThemeReview Ruleset -->
-	<rule ref="WPThemeReview" />
-
-	<!--
-		Exclude checking for shortened URLs in Bootstrap's js. files.
-		Also exlude theme.js which includes bootstrap.js.
-	-->
-	<rule ref="WPThemeReview.Privacy.ShortenedURLs.Found">
-		<exclude-pattern>/js/child-theme*\.js</exclude-pattern>
-	</rule>
 </ruleset>

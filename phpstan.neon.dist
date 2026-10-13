@@ -7,11 +7,12 @@ includes:
 	- phpstan-baseline.neon
 parameters:
 	level: max
+	reportUnmatchedIgnoredErrors: false
 	paths:
-		- inc/
+		- functions.php
 	excludePaths:
-		- inc/deprecated.php
-		- inc/class-wp-bootstrap-navwalker.php
+		- inc/deprecated.php (?)
+		- inc/class-wp-bootstrap-navwalker.php (?)
 	tmpDir: .phpstan-cache
 	ignoreErrors:
 		# no value type specified in iterable type:

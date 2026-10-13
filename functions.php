@@ -8,194 +8,86 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-/**
- * HelloPixel Functions
- * Understrap Functions
- * Register Blocks
- */
-include_once( 'inc/hp_functions.php' );
-include_once( 'inc/understrap_functions.php' );
-include_once( 'inc/register_blocks.php' );
 
 
 /**
- * SCF JSON configuration directory.
+ * Removes the parent themes stylesheet and scripts from inc/enqueue.php
  */
-add_filter( 'acf/settings/save_json', function () {
+function understrap_remove_scripts(): void {
+	wp_dequeue_style( 'understrap-styles' );
+	wp_deregister_style( 'understrap-styles' );
 
-    return get_stylesheet_directory() . '/inc/scf-json';
-
-} );
-
-
-/**
- * SCF JSON loading.
- */
-add_filter( 'acf/settings/load_json', function () {
-
-    return [
-        get_stylesheet_directory() . '/inc/scf-json',
-    ];
-
-} );
-
-
-/**
- * Disable SCF administration outside development.
- */
-if ( !is_dev_env() ) {
-
-    add_filter( 'acf/settings/show_admin', '__return_false' );
-    add_filter( 'acf/settings/show_updates', '__return_false', 100 );
-
+	wp_dequeue_script( 'understrap-scripts' );
+	wp_deregister_script( 'understrap-scripts' );
 }
+add_action( 'wp_enqueue_scripts', 'understrap_remove_scripts', 20 );
+
 
 
 /**
- * Tweak some WP admin styles
+ * Enqueue our stylesheet and javascript file
  */
-function my_custom_admin_styles() {
-    echo '<style>
-        @media (min-width: 1000px) {
-            .interface-interface-skeleton__sidebar {
-                width: 400px !important;
-                max-width: 400px !important;
-            }
+function theme_enqueue_styles(): void {
 
-            .interface-complementary-area, .interface-complementary-area__fill {
-                width: 100% !important
-            }
-        }
-    </style>';
+	// Get the theme data.
+	$the_theme = wp_get_theme();
+
+	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+	// Grab asset urls.
+	$theme_styles    = "/css/child-theme{$suffix}.css";
+	$theme_scripts   = "/js/child-theme{$suffix}.js";
+	$theme_version   = $the_theme->get( 'Version' );
+	$styles_file     = get_stylesheet_directory() . $theme_styles;
+	$scripts_file    = get_stylesheet_directory() . $theme_scripts;
+	$styles_version  = file_exists( $styles_file ) ? (string) filemtime( $styles_file ) : $theme_version;
+	$scripts_version = file_exists( $scripts_file ) ? (string) filemtime( $scripts_file ) : $theme_version;
+
+	wp_enqueue_style( 'child-understrap-styles', get_stylesheet_directory_uri() . $theme_styles, array(), $styles_version );
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'child-understrap-scripts', get_stylesheet_directory_uri() . $theme_scripts, array(), $scripts_version, true );
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
-add_action('admin_head', 'my_custom_admin_styles');
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
 
 
 /**
- * HelloPixel Editor Button
+ * Load the child theme's text domain
  */
-function hellopixel_editor_button_assets() {
-
-    $js_file  = get_stylesheet_directory() . '/js/editor/button.js';
-    $css_file = get_stylesheet_directory() . '/css/editor/button.css';
-
-    wp_enqueue_script(
-        'hellopixel-editor-button',
-        get_stylesheet_directory_uri() . '/js/editor/button.js',
-        array( 'jquery' ),
-        filemtime( $js_file ),
-        true
-    );
-
-    wp_enqueue_style(
-        'hellopixel-editor-button',
-        get_stylesheet_directory_uri() . '/css/editor/button.css',
-        array(),
-        filemtime( $css_file )
-    );
-
-    wp_localize_script(
-        'hellopixel-editor-button',
-        'helloPixelEditorButton',
-        array(
-            'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-            'nonce'   => wp_create_nonce( 'hellopixel_editor_button' ),
-        )
-    );
+function add_child_theme_textdomain(): void {
+	load_child_theme_textdomain( 'understrap-child', get_stylesheet_directory() . '/languages' );
 }
+add_action( 'after_setup_theme', 'add_child_theme_textdomain' );
 
-add_action(
-    'admin_enqueue_scripts',
-    'hellopixel_editor_button_assets'
-);
 
 
 /**
- * Get published pages for the editor button modal.
+ * Sets the Bootstrap version to the version bundled by this child theme.
+ *
+ * This function uses the `theme_mod_{$name}` hook and
+ * can be duplicated to override other theme settings.
+ *
+ * @return string
  */
-function hellopixel_get_editor_button_pages() {
-
-    check_ajax_referer(
-        'hellopixel_editor_button',
-        'nonce'
-    );
-
-    $pages = get_pages(
-        array(
-            'sort_column' => 'post_title',
-            'sort_order'  => 'ASC',
-            'post_status' => 'publish',
-        )
-    );
-
-    $results = array();
-
-    foreach ( $pages as $page ) {
-
-        $results[] = array(
-            'id'    => $page->ID,
-            'title' => $page->post_title,
-            'url'   => get_permalink( $page->ID ),
-        );
-    }
-
-    wp_send_json_success( $results );
+function understrap_default_bootstrap_version() {
+	return 'bootstrap6';
 }
+add_filter( 'theme_mod_understrap_bootstrap_version', 'understrap_default_bootstrap_version', 20 );
 
-add_action(
-    'wp_ajax_hellopixel_get_editor_button_pages',
-    'hellopixel_get_editor_button_pages'
-);
 
 
 /**
- * Only display HelloPixel blocks in the editor
+ * Loads javascript for showing customizer warning dialog.
  */
-    function hellopixel_allowed_blocks( $allowed_block_types, $editor_context ) {
-
-        $registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
-
-        return array_keys(
-            array_filter(
-                $registered_blocks,
-                function ( $block ) {
-                    return str_starts_with( $block->name, 'hellopixel/' )
-                        || $block->name === 'contact-form-7/contact-form-selector';
-                }
-            )
-        );
-    }
-
-    add_filter( 'allowed_block_types_all', 'hellopixel_allowed_blocks', 10, 2 );
-
-
-/**
- * Enqueue the focal point picker assets.
- */
-function hellopixel_focal_point_admin_assets( $hook ) {
-
-    // Only load on post/page editing screens.
-    if ( ! in_array( $hook, array( 'post.php', 'post-new.php' ), true ) ) {
-        return;
-    }
-
-    wp_enqueue_script(
-        'hellopixel-focal-point',
-        get_stylesheet_directory_uri() . '/js/editor/focal-point.js',
-        array( 'jquery' ),
-        filemtime( get_stylesheet_directory() . '/js/editor/focal-point.js' ),
-        true
-    );
-
-    wp_enqueue_style(
-        'hellopixel-focal-point',
-        get_stylesheet_directory_uri() . '/css/editor/focal-point.css',
-        array(),
-        filemtime( get_stylesheet_directory() . '/css/editor/focal-point.css' )
-    );
+function understrap_child_customize_controls_js(): void {
+	wp_enqueue_script(
+		'understrap_child_customizer',
+		get_stylesheet_directory_uri() . '/js/customizer-controls.js',
+		array( 'customize-preview' ),
+		'20130508',
+		true
+	);
 }
-
-add_action( 'admin_enqueue_scripts', 'hellopixel_focal_point_admin_assets' );
-
-
-
+add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
