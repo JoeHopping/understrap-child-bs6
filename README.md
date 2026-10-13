@@ -56,7 +56,7 @@ This lists the available npm scripts.
 | Understrap | Understrap parent theme |
 | Bootstrap | 6 |
 | PHP | 8.3+ |
-| Node.js | Use a version compatible with the installed dependencies |
+| Node.js | ^24.15.0 or >=26.11.1 |
 
 ## Purpose
 
